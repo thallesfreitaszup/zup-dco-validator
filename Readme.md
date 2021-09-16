@@ -30,4 +30,4 @@ If you have suggestions for how dco-validator could be improved, or want to repo
 
 ## License
 
-[ISC](LICENSE) © 2021 Hector Custódio <hectorcustodio@outlook.com.br>
+[ISC](LICENSE) © 2021 ZupIt

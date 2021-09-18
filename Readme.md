@@ -10,7 +10,7 @@ e.g:
 name: DCO GPG VALIDATOR
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, synchronize]
     branches: [main]
 
 jobs:

@@ -4,6 +4,7 @@ This action helps you check pull request commits signatures for DCO (Developer C
 
 For default, GPG validation is disabled but you can easily change that using an environment variable:
 
+[Learn more about GPG verification for your commits](https://docs.github.com/pt/github/authenticating-to-github/managing-commit-signature-verification/about-commit-signature-verification)
 
 e.g:
 ```sh
@@ -20,7 +21,7 @@ jobs:
       - uses: ZupIT/zup-dco-validator@v1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VALIDATE_GPG: true
+          VALIDATE_GPG: false
 ```
 
 ## Contributing

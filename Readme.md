@@ -27,8 +27,3 @@ jobs:
 ## Contributing
 
 If you have suggestions for how dco-validator could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
-
-
-## License
-
-[ISC](LICENSE) © 2021 ZupIt

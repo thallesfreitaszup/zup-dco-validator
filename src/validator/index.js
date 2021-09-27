@@ -111,7 +111,7 @@ const validateCommitSignatures = async () => {
     console.log('NOT SIGNED COMMITS', notSignedCommits)
 
 
-    if (shouldVerifyGpg)
+    if (shouldVerifyGpg === true)
       notGpgVerifiedCommits = checkCommitsGpgVerification(prCommits)
 
     console.log('NOT GPG VERIFIED COMMITS', notGpgVerifiedCommits)

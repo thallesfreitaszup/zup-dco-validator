@@ -5686,15 +5686,20 @@ function wrappy (fn, cb) {
 
 const github = __nccwpck_require__(5438);
 
-const validateCommitSignatures = async () => {
+const validateCommitSignatures = () => {
   const octokit = github.getOctokit(process.env.GITHUB_TOKEN)
-  const { payload, repo } = github.context
+  let { payload, repo, eventName, sha, ref } = github.context
   const { pull_request: pr } = payload
+
+  if (pr !== undefined) {
+    sha = pr.head.sha
+    ref = pr.head.ref
+  }
 
   const status = {
     name: 'Result',
-    head_branch: pr.head.ref,
-    head_sha: pr.head.sha,
+    head_branch: ref,
+    head_sha: sha,
     status: 'completed',
     started_at: new Date(),
     ...repo
@@ -5730,7 +5735,8 @@ const validateCommitSignatures = async () => {
 
   }
 
-  const createFailedCheckVerification = async (...failedCommits) => {
+
+  const createFailedCheckVerification = (...failedCommits) => {
 
     const [notSigned, notVerified] = failedCommits
 
@@ -5792,7 +5798,23 @@ const validateCommitSignatures = async () => {
     return createSuccessCheckVerification()
   }
 
-  start()
+  if (eventName === 'pull_request') {
+    return start()
+  } else {
+
+    const failedCheck = {
+      ...status,
+      conclusion: 'failure',
+      completed_at: new Date(),
+      output: {
+        title: 'Failed Validation',
+        summary: 'Please, make sure you are using the correct configuration for this action. https://github.com/ZupIT/zup-dco-validator'
+      }
+    }
+
+    return octokit.rest.checks.create(failedCheck)
+  }
+
 
 }
 

@@ -1,6 +1,6 @@
 ## How to use this action
 
-This action helps you check pull request commits signatures for DCO (Developer Certificate of Origin) and GPG verification
+This action helps you check **pull request** commits signatures for DCO (Developer Certificate of Origin) and GPG verification
 
 For default, GPG validation is disabled but you can easily change that using an environment variable:
 
@@ -23,6 +23,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VALIDATE_GPG: false
 ```
+
+Note: This action needs permission for writing on the checks endpoint of the github API. Keep that in mind in case you need to change the default permissions for the GITHUB_TOKEN.
 
 ## Contributing
 

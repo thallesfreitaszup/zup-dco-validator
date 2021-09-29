@@ -112,7 +112,7 @@ const validateCommitSignatures = () => {
 
 
     const { data: prCommits } = await loadCommitsForPullRequest(pr.commits_url)
-    console.log(data)
+    console.log(prCommits)
     notSignedCommits = checkCommitsSignOff(prCommits)
     console.log('NOT SIGNED COMMITS', notSignedCommits)
 
